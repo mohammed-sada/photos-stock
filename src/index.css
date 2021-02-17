@@ -36,7 +36,7 @@ Variables
   --clr-green-dark: hsl(125, 67%, 44%);
   --clr-green-light: hsl(125, 71%, 66%);
   --clr-black: #222;
-  --transition: all 0.3s linear;
+  --transition: all 0.2s linear;
   --spacing: 0.1rem;
   --radius: 0.25rem;
   --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -148,7 +148,7 @@ Stock Photos
   display: flex;
 }
 .form-input {
-  width: 100%;
+  width: 50%;
 }
 .form-input,
 .submit-btn {
@@ -172,7 +172,7 @@ Stock Photos
   color: var(--clr-grey-5);
 }
 .photos {
-  padding: 5rem 0;
+  padding: 1rem 0 5rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -217,6 +217,24 @@ Stock Photos
   height: 2.5rem;
   border-radius: 50%;
 }
+.alert {
+  position: absolute;
+  width: 100%;
+  padding: 1rem;
+  top: 0;
+  left: 20;
+  background: rgba(8, 190, 17, 0.719);
+  color: white;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-100%);
+}
+.show {
+  transform: translateY(0);
+}
+
 .photo-info {
   position: absolute;
   width: 100%;
@@ -241,8 +259,10 @@ Stock Photos
   .photos-center {
     grid-template-columns: repeat(auto-fill, minmax(368px, 1fr));
   }
-  .search-form {
-    max-width: var(--fixed-width);
+}
+@media screen and (max-width: 600px) {
+  .form-input {
+    width: 100%;
   }
 }
 
@@ -289,7 +309,7 @@ Loading
 .links a {
   width: 100%;
   height: 100%;
-  padding: 1rem 4rem;
+  padding: 1rem 3rem;
   color: #fff;
 }
 .links a:hover {

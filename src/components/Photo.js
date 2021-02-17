@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FiHeart } from "react-icons/fi";
 import { BsTrash } from "react-icons/bs";
 
@@ -16,6 +16,8 @@ const Photo = ({
     portfolio_url,
   },
 }) => {
+  const [alert, setAlert] = useState({ show: false, msg: "" });
+
   const removePhoto = (id) => {
     const newPhotos = likedPhotos.filter((photo) => photo.id !== id);
     setLikedPhotos(newPhotos);
@@ -28,9 +30,14 @@ const Photo = ({
       }
     });
     !exist && setLikedPhotos([...likedPhotos, { ...photo }]);
+    setAlert({ show: true, msg: "added to favorite" });
+    setTimeout(() => {
+      setAlert(false);
+    }, 2000);
   };
   return (
     <div className="photo">
+      <h4 className={`alert ${alert.show && "show"}`}>{alert.msg}</h4>
       <img src={regular} alt={description} />
       <div className="photo-info">
         <div>
