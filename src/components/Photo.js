@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FiHeart } from "react-icons/fi";
 import { BsTrash } from "react-icons/bs";
+import { Link, useHistory } from "react-router-dom";
 
 const Photo = ({
   likedPhotosPage,
@@ -15,7 +16,9 @@ const Photo = ({
     profile_image: { medium },
     portfolio_url,
   },
+  id,
 }) => {
+  const history = useHistory();
   const [alert, setAlert] = useState({ show: false, msg: "" });
 
   const removePhoto = (id) => {
@@ -36,28 +39,33 @@ const Photo = ({
     }, 2000);
   };
   return (
-    <div className="photo">
-      <h4 className={`alert ${alert.show && "show"}`}>{alert.msg}</h4>
-      <img src={regular} alt={description} />
-      <div className="photo-info">
-        <div>
-          <h3>{name}</h3>
-          <h4>{likes} likes</h4>
+    <Link onDoubleClick={() => history.push(`/photos/single-photo/${id}`)}>
+      <div className="photo">
+        <h4 className={`alert ${alert.show && "show"}`}>{alert.msg}</h4>
+        <img src={regular} alt={description} />
+        <div className="photo-info">
+          <div>
+            <h3>{name}</h3>
+            <h4>{likes} likes</h4>
+          </div>
+          {likedPhotosPage ? (
+            <button className="icon" onClick={() => removePhoto(photo.id)}>
+              <BsTrash />
+            </button>
+          ) : (
+            <button
+              className="icon"
+              onClick={() => handleLikedPhotos(photo.id)}
+            >
+              <FiHeart />
+            </button>
+          )}
+          <a href={portfolio_url} target="_blank" rel="noopener noreferrer">
+            <img className="user-img" src={medium} alt={name} />
+          </a>
         </div>
-        {likedPhotosPage ? (
-          <button className="icon" onClick={() => removePhoto(photo.id)}>
-            <BsTrash />
-          </button>
-        ) : (
-          <button className="icon" onClick={() => handleLikedPhotos(photo.id)}>
-            <FiHeart />
-          </button>
-        )}
-        <a href={portfolio_url} target="_blank" rel="noopener noreferrer">
-          <img className="user-img" src={medium} alt={name} />
-        </a>
       </div>
-    </div>
+    </Link>
   );
 };
 

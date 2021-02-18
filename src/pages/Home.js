@@ -84,6 +84,9 @@ function App({ likedPhotos, setLikedPhotos }) {
         </button>
       </form>
       <div className="photos">
+        <h3 style={{ padding: "1rem 0" }}>
+          Double click the photo for more info
+        </h3>
         <div className="photos-center ">
           {photos.map((photo, idx) => {
             return (

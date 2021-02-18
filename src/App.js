@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import LikedPhotos from "./pages/LikedPhotos";
 import Home from "./pages/Home";
 import Error from "./pages/Error";
+import SinglePhoto from "./pages/SinglePhoto";
 
 import Navbar from "./components/Navbar";
 
@@ -34,6 +36,9 @@ const App = () => {
             likedPhotos={likedPhotos}
             setLikedPhotos={setLikedPhotos}
           />
+        </Route>
+        <Route path="/photos/single-photo/:id">
+          <SinglePhoto />
         </Route>
         <Route path="*">
           <Error />
