@@ -125,6 +125,10 @@ p {
   width: 90vw;
   margin: 0 auto;
   max-width: var(--max-width);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (min-width: 992px) {
@@ -395,6 +399,10 @@ Loading
     border: none;
     padding-right: 0;
   }
+  .related img {
+    height: 13rem;
+  }
+
   .info {
     margin-top: 1rem;
   }

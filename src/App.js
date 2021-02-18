@@ -38,7 +38,10 @@ const App = () => {
           />
         </Route>
         <Route path="/photos/single-photo/:id">
-          <SinglePhoto />
+          <SinglePhoto
+            likedPhotos={likedPhotos}
+            setLikedPhotos={setLikedPhotos}
+          />
         </Route>
         <Route path="*">
           <Error />
