@@ -59,17 +59,20 @@ const SinglePhoto = ({ likedPhotos, setLikedPhotos }) => {
   } = photo;
   return (
     <div className="section">
-      <button
-        onClick={() => handleLikedPhotos(singleId)}
-        style={{ marginBottom: "1rem", margin: "1rem auto" }}
-        className="submit-btn"
-      >
-        Add to favorite
-      </button>
+      <div style={{ position: "relative" }}>
+        <button
+          onClick={() => handleLikedPhotos(singleId)}
+          style={{
+            margin: "3rem auto 1rem auto",
+          }}
+          className="submit-btn"
+        >
+          Add to favorite
+        </button>
+        <h4 className={`alert ${alert.show && "show"}`}>{alert.msg}</h4>
+      </div>
       <div className="single-photo">
         <div className="photo-header">
-          <h4 className={`alert ${alert.show && "show"}`}>{alert.msg}</h4>
-
           <img src={regular} alt={alt_description} />
         </div>
         <div className="info">

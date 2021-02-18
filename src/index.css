@@ -349,6 +349,10 @@ Loading
   align-items: center;
 }
 
+.photo-header {
+  position: relative;
+}
+
 .photo-header img {
   width: 40rem;
   border-right: 5px solid var(--clr-primary-1);
